@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+
+</head>
+<body>
+
+
+
+	<div class="container">
+
+	<div class="col-xl-6 col-lg-6 col-md-6 col-6 col-sm-6 m-auto pt-3">
+
+	<h1 class="text-center text-uppercase">To Do App</h1>
+
+	<div class="form-group">
+	<input type="text" name="" class="form-control " id="i" placeholder="Enter Value">	
+    <button class="btn btn-primary mt-4" onclick="To_do();">Add Items</button>
+    </div>
+
+
+    <div class="table-responsive">
+    	<table class="table table-bordered text-center ">
+    		<th class="bg-dark text-white">Add Items</th>
+    		
+
+    		<tr>
+    			<td>
+
+    			<ol id="list" class="  "></ol>
+
+    			</td>
+
+
+
+    		</tr>
+
+
+    	</table>
+    </div>
+
+
+
+    </div>
+	</div>
+
+	<script type="text/javascript">
+	 		
+	 	var lis = 	document.getElementById('list')
+	 		var txt = 	document.getElementById('i')
+
+
+		function To_do()
+		{
+	 		if (txt.value == "")
+	 		 {
+	 		 	alert('Cannot Field Remain Empty')
+	 		 }
+	 		 else
+	 		 {
+
+
+	 		var li =document.createElement('li')
+	 		var txtli = document.createTextNode(txt.value)
+	 		li.appendChild(txtli)
+
+	 		var deletebtn = document.createElement('button')
+	 		var btntxt = document.createTextNode("delete") 
+	 		deletebtn.setAttribute("class","btn btn-danger ml-4 mt-2 mr-2")
+	 		deletebtn.setAttribute("onclick","Delete_btn(this)")
+	 		lis.appendChild(deletebtn)
+	 		deletebtn.appendChild(btntxt)
+
+
+
+
+	 		//edit btn 
+	 		var editbtn = document.createElement('button')
+	 		var editbtntxt = document.createTextNode("Update") 
+	 		editbtn.setAttribute("class","btn btn-warning mt-2")
+	 		editbtn.setAttribute("onclick","Edit(this)")
+	 		lis.appendChild(editbtn)
+	 		editbtn.appendChild(editbtntxt)
+
+
+	 		lis.appendChild(li)
+	 		li.appendChild(deletebtn)
+	 		li.appendChild(editbtn)
+	 		txt.value = ""
+	 		txt.focus()
+
+
+        }
+
+
+		}
+		
+		function Delete_btn(p)
+		{
+			
+			 p.parentNode.remove()
+		}
+
+		function Edit(pr)
+		{
+
+			var pvalue =  prompt("Enter Your Update Value",pr.parentNode.firstChild.nodeValue)
+			pr.parentNode.firstChild.nodeValue = pvalue 
+
+
+		}
+
+		
+
+	</script>
+
+</body>
+</html>
